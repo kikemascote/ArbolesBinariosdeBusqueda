@@ -23,14 +23,14 @@ public class btree<T extends Comparable> implements Comparable<T> {
 
     }
     private void add(T value, node<T> root){
-        if (root.getValue().compareTo(value)==1){
+        if (root.getValue().compareTo(value)>=1){
             if (root.getLeft()==null){
                 root.setLeft(new node<>(value));
                 return;
             }else {
                 add(value,root.getLeft());
             }
-        }else if (root.getValue().compareTo(value)==-1 || root.getValue().compareTo(value)== 0){
+        }else if (root.getValue().compareTo(value)<=-1 || root.getValue().compareTo(value)== 0){
             if (root.getRight()==null){
                 root.setRight(new node<>(value));
                 return;
