@@ -28,5 +28,11 @@ public class App {
         cadenitas.add("E");
 
         cadenitas.printInOrder();
+
+        btree<Double> doblesitos = new btree<>();
+        doblesitos.add(2.3);
+        doblesitos.add(3.2);
+        doblesitos.add(5.1);
+        doblesitos.printInOrder();
     }
 }
