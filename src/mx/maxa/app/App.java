@@ -1,5 +1,6 @@
 package mx.maxa.app;
 
+import mx.maxa.alumno.Alumno;
 import mx.maxa.btree.btree;
 
 public class App {
@@ -34,5 +35,7 @@ public class App {
         doblesitos.add(3.2);
         doblesitos.add(5.1);
         doblesitos.printInOrder();
+
+        btree<Alumno> alumnos = new btree<>();
     }
 }
