@@ -40,14 +40,35 @@ public class btree<T extends Comparable> implements Comparable<T> {
         }
     }
     public boolean remove(T value){
+        node<T> tmp = deepSearch(value);
         if (deepSearch(value)!=null)
-            return remove(value, root, null);
+            return remove(value, tmp, isChild(value));
         else return false;
     }
     private boolean remove(T value, node<T> root, node<T> paps){
-        if (isChild(value)==null){
-            
+        //revisar estooooooo
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+
+        if (root.getLeft()==null && root.getRight()==null){
+            if (paps.getLeft().equals(root))
+                paps.setLeft(root.getLeft());
+            else
+                paps.setRight(root.getLeft());
+            return true;
+        }else if (root.getLeft()==null && root.getRight()!=null){
+            if (paps.getLeft().equals(root))
+                paps.setLeft(null);
+            else
+                paps.setRight(null);
+            return true;
         }
+        return false;
     }
     public void printInOrder(node<T> root){
         if (root.getLeft()!=null)
