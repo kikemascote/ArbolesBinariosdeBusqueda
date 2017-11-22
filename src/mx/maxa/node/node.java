@@ -52,4 +52,8 @@ public class node<T> implements Comparable<T>{
     public int compareTo(T o) {
         return 0;
     }
+    @Override
+    public String toString(){
+        return value+"";
+    }
 }

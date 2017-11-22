@@ -44,6 +44,11 @@ public class Alumno implements Comparable<Alumno>, Comparator<Alumno> {
 
         return o1.compareTo(o2);
     }
+
+    @Override
+    public String toString(){
+        return promedio+"";
+    }
     /*
     String nombre=null;
     double promedio = 0.00;

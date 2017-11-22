@@ -35,6 +35,10 @@ public class App {
         doblesitos.add(3.2);
         doblesitos.add(5.1);
         doblesitos.printInOrder();
+        System.out.println("Encontrando a 3.2: "+doblesitos.deepSearch(3.2d).toString());
+
+
+        System.out.println("paps: "+doblesitos.isChild(2.3d).toString());
 
         btree<Alumno> alumnos = new btree<>();
     }

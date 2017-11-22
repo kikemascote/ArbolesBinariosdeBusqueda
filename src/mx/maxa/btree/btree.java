@@ -40,7 +40,14 @@ public class btree<T extends Comparable> implements Comparable<T> {
         }
     }
     public boolean remove(T value){
-        return false;
+        if (deepSearch(value)!=null)
+            return remove(value, root, null);
+        else return false;
+    }
+    private boolean remove(T value, node<T> root, node<T> paps){
+        if (isChild(value)==null){
+            
+        }
     }
     public void printInOrder(node<T> root){
         if (root.getLeft()!=null)
@@ -52,15 +59,56 @@ public class btree<T extends Comparable> implements Comparable<T> {
             printInOrder(root.getRight());
         //System.out.println(root.getValue().toString());
     }
+
+    public node<T> deepSearch(T value){
+        return deepSearch(value, root);
+    }
+
+    private node<T> deepSearch(T value, node<T> root){
+        if (root!=null) {
+            if (root.getValue().equals(value))
+                return root;
+            if (root.getValue().compareTo(value)<=-1) {
+                return deepSearch(value, root.getRight());
+            } else {
+                return deepSearch(value, root.getLeft());
+            }
+        }else {
+            return null;
+        }
+
+
+    }
+
+    public node<T> breadthSearch(){
+        return null;
+    }
+
     public void printPreOrder(){
 
     }
     public void printPostOrder(){
 
     }
-    private void isChild(T value){
-
+    public node<T> isChild(T value){
+        if (deepSearch(value)==null)
+            return null;
+        return isChild(value, root, null);
     }
+    private node<T> isChild(T value, node<T> root, node<T> paps){
+        if (root!=null) {
+            if (root.getValue().equals(value))
+                return paps;
+            if (root.getValue().compareTo(value)<=-1) {
+                return isChild(value, root.getRight(),root);
+            } else {
+                return isChild(value, root.getLeft(),root);
+            }
+        }else {
+            return null;
+        }
+    }
+
     private boolean isEmpty(){
 
         return false;
