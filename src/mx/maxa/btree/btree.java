@@ -47,29 +47,53 @@ public class btree<T extends Comparable> implements Comparable<T> {
     }
     private boolean remove(T value, node<T> root, node<T> paps){
         //revisar estooooooo
-        //
-        //
-        //
-        //
-        //
-        //
-        //
+        node<T> tmp = deepSearch(value);
+        System.out.println(tmp.getValue().toString());
+        System.out.println(tmp.getLeft().getValue().toString());
+        System.out.println(tmp.getRight().getValue().toString());
 
-        if (root.getLeft()==null && root.getRight()==null){
+        if (isChild(value)==null){
+            node<T> miNode = minSearch(tmp.getRight());
+            miNode.setLeft(tmp.getLeft());
+            this.root =tmp.getRight();
+            return true;
+
+        }
+
+        if (root.getLeft()== null && root.getRight() == null){
+            if (paps.getLeft().equals(root) && paps.getLeft()!=null)
+                paps.setLeft(null);
+            else if (paps.getRight()!= null)
+                paps.setRight(null);
+            return true;
+        }else if (root.getLeft()!=null && root.getRight()==null){
             if (paps.getLeft().equals(root))
                 paps.setLeft(root.getLeft());
             else
                 paps.setRight(root.getLeft());
             return true;
-        }else if (root.getLeft()==null && root.getRight()!=null){
+        }else if (root.getLeft() == null && root.getRight() != null) {
             if (paps.getLeft().equals(root))
-                paps.setLeft(null);
+                paps.setLeft(root.getRight());
             else
-                paps.setRight(null);
+                paps.setRight(root.getRight());
             return true;
+        }else {
+            if (paps.getLeft().equals(root)) {
+                node<T> left = minSearch(root.getRight());
+                left.setLeft(root.getLeft());
+                paps.setLeft(root.getRight());
+            } else {
+                node<T> left = minSearch(root.getRight());
+                left.setLeft(root.getLeft());
+                paps.setRight(root.getRight());
+            }
         }
-        return false;
+        return true;
     }
+
+
+
     public void printInOrder(node<T> root){
         if (root.getLeft()!=null)
             printInOrder(root.getLeft());
@@ -138,13 +162,15 @@ public class btree<T extends Comparable> implements Comparable<T> {
 
         return null;
     }
-    private node<T> minSearch(){
-
-        return null;
+    private node<T> minSearch(node<T> root){
+        while(root.getLeft()!=null)
+            root = root.getLeft();
+        return root;
     }
-    private node<T> maxSearch(){
-
-        return null;
+    private node<T> maxSearch(node<T> root){
+        while(root.getRight()!=null)
+            root = root.getRight();
+        return root;
     }
     private int maxDepth(){
 
