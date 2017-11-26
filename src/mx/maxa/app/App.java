@@ -23,7 +23,7 @@ public class App {
             numeritos.add((int)(Math.random()*1000000)+1);
         }*/
 
-        numeritos.printInOrder();
+        numeritos.printInorder();
 
 //        btree<String> cadenitas = new btree<>();
 //
@@ -47,7 +47,7 @@ public class App {
 //
 //        //System.out.println("paps: "+doblesitos.isChild(2.3d).toString());
 //
-//        btree<Alumno> alumnos = new btree<>();
+        btree<Alumno> alumnos = new btree<>();
 
 
     }
